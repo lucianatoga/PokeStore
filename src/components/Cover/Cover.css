@@ -1,0 +1,21 @@
+.start{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo{
+    animation: twinkle 3s linear infinite;
+}
+
+@keyframes twinkle {
+    0%{
+        width: 20rem
+    }
+    50% {
+        width: 22rem;
+    }
+    100% {
+        width: 20rem;
+    }
+}

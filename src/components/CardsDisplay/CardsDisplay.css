@@ -1,0 +1,74 @@
+.cards-container{
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 80vh;
+    margin: 3rem 0;
+}
+
+.more-button{
+    border: none;
+    border-radius: 40%;
+    padding: 0 2rem;
+    font-size: 7rem;
+    font-family: "Bangers", system-ui;
+    background-color: none;
+    position: absolute;
+    color: rgba(182, 60, 38, 0.842) ;
+    cursor: pointer;
+    text-shadow: 5px 5px 7rem rgb(255, 234, 47);
+    /* blue rgba(46, 79, 151, 0.842)  
+    background-color: rgba(255, 234, 47, 0.24);
+    box-shadow: 0  0 10rem  rgba(255, 234, 47, 0.562); */
+}
+.more-button:hover{
+    scale: 1.05;
+    text-shadow: 5px 5px 5rem rgb(255, 234, 47);
+    transition: all 1s ease-in-out;
+}
+
+/* GENERAL */
+.card{
+    width: 10rem;
+    height: 15rem;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../../assets/pokecard-front.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    img{
+        min-width: 2.5rem;
+        display: none;
+        position: relative;
+        max-width: 5rem;
+    }
+    p{
+        display: none;
+        margin: 0;
+        color: black;
+        font-size: 10px;
+        font-weight: 600;
+        position: relative;
+        right: 1.3rem;
+        top: 1rem;
+    }
+}
+.card:hover{
+    background-image: url('../../assets/pokecard-back.jpg');
+}
+.card:hover p{
+    display:block;
+}
+.card:hover img{
+    display: block;
+}
+
+.berries img{
+    top: 2.5rem;
+}
+.pokemons img{
+    top: 1.5rem;
+}
+
