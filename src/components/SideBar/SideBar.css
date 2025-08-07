@@ -23,6 +23,17 @@
     img{
         width: 1.5rem;
     }
+    p{
+        position: relative;
+        bottom: 3rem;
+        left: 1rem;
+        color: rgb(247, 71, 40);
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        background-color: rgba(52, 97, 194, 0.644) ;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+    }
 }
 
 .no-display{

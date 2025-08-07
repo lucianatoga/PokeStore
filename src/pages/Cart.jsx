@@ -1,10 +1,13 @@
-import { Flex } from "@chakra-ui/react"
+import CartItem from "@/components/CartItem/CartItem";
+import { CartContext } from "@/context/CartContext";
+import { Heading } from "@chakra-ui/react";
+import { useContext } from "react";
 
 const Cart=()=>{
+    const {cart}=useContext(CartContext);
+
     return(
-        <Flex>
-            Cart Detail
-        </Flex>
+        cart.length<1 ? <Heading size='xl'>CART IS EMPTY</Heading> : <CartItem/>
     )
 }
 

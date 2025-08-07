@@ -7,17 +7,17 @@ import { getBerries, getPokemons } from "@/services/poke.service";
 const Home=()=>{
     const [pokemons, setPokemons]=useState([]);
     const [berries, setBerries]=useState([]);
-
+  
     useEffect(()=>{        
-        getPokemons(16).then((data)=>setPokemons(data || [])).catch((error)=>{console.error(error)});
-        getBerries(16).then((data)=> setBerries(data || [])).catch((error)=>console.error(error))
+        getPokemons(14).then((data)=>setPokemons(data || [])).catch((error)=>{console.error(error)});
+        getBerries(14).then((data)=> setBerries(data || [])).catch((error)=>console.error(error));
     },[])
     return(
 
         <Box>
             <Cover/>
-            <CardsDisplay items={pokemons} title={'pokemons'}/> 
-            <CardsDisplay items={berries} title={'berries'}/>
+            <CardsDisplay items={pokemons} title={'pokemons'} typeOfTitle={'button'}/>
+            <CardsDisplay items={berries} title={'berries'} typeOfTitle={'button'}/>
         </Box>
     )
 }

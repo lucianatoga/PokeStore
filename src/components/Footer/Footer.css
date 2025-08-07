@@ -4,4 +4,5 @@
     font-family: 'Courier New', Courier, monospace;
     justify-content: space-evenly;
     align-items: center;
+    border-top: 1px solid rgb(29, 29, 29);
 }

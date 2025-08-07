@@ -1,0 +1,87 @@
+
+.shopping-cart-summary {
+  text-align: center;
+  width: 80%;
+  height: 100%;
+  flex-direction: column;
+  gap: 3rem
+}
+/* TABLE HEADER */
+.items-table thead th {
+  font-weight: 500;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid black;
+}
+
+/* TABLE BODY */
+.items-table tbody td {
+  padding: 0.5rem;
+  height: 10rem;
+  border-bottom: 1px solid black;
+ 
+}
+.cart-card{
+  height: 100%;
+  background-image: url('../../assets/pokecard-back.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-direction: column;
+  align-items: center;  
+  padding: 4px;
+  gap: 7px;
+  p{
+      font-size: 7px;
+      font-weight: 600;
+      color: black;
+      position: relative;
+      right: .8rem
+  }
+  img{
+    max-width: 3rem;
+  }
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.qty-input {
+  display: flex;
+  border: 1.8px solid black;
+  width: 6rem;
+  height: 2rem; 
+  color: black;
+  
+  button{
+    color: black;
+    width: 2rem;
+    background-color: rgba(52, 97, 194, 0.486);
+  }
+  input {
+    width: 2rem;
+    background-color: rgba(52, 97, 194, 0.486);
+    text-align: center;
+    border-left: 1px  solid black;
+    border-right: 1px  solid black;
+  }
+  /* to remove the built-in increase/decrease buttons*/
+  input::-webkit-inner-spin-button, input::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+/* TABLE FOOTER */
+.items-table tfoot th{
+  padding: 1rem 3rem 0 0;
+  text-align: right;
+  font-weight: 500;
+}
+
+.checkout-btn{
+  background-color: rgba(52, 97, 194, 0.486);
+  border: 1.8px solid black;
+}
