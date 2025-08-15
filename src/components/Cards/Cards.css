@@ -1,0 +1,96 @@
+.card-container{
+    width:27rem;
+    height: 23rem;
+    justify-content: space-between;
+    
+}
+
+.detail-card{
+    width: 18rem;
+    height: 22rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    color: rgb(36, 36, 36);
+    p{
+        position: relative;
+    }
+    img{
+        position: relative;
+        
+    }
+}
+
+.pokemon{
+    background-image: url('../../assets/pokecard-back.png');
+    p{
+        right: 2.5rem;
+        font-size: 14px;
+        font-weight: 600;        
+    }
+    img{
+        top:1.5rem;
+        min-width: 7rem;
+    }
+}
+.berry{
+    background-image: url('../../assets/berry-card.png');
+    p{
+        right: 3.9rem;
+        top: 14px;
+        font-weight: 700;
+        font-size: 15px;
+    }
+    img{
+        top: 3rem;
+        min-width: 4rem
+    }
+}
+
+.energy-item{
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    position: relative;
+    bottom: 8.1rem;
+    left: 6.6rem;
+    background-image: url('../../assets/energy-types.png');
+    background-size: 385%;
+    background-repeat: no-repeat;
+}
+.fire{
+    background-position: 0px 0px;
+}
+.dragon{
+    background-position: 0px -18.5px;
+}
+.darkness, .dark{
+    background-position: 0px -37px;
+}
+.colorless, .normal{
+    background-position: -18.5px 0px;
+}
+.lightning, .electric{
+    background-position: -36.5px -37px;
+}
+.grass, .bug{
+    background-position: -18.5px -37px;
+}
+.fairy{
+    background-position: -36.5px 0px;
+}
+.fighting, .ground, .rock, .ice{
+    background-position: -36.5px -18.5px;
+}
+.metal{
+    background-position: -55px 0px;
+}
+.psychic, .poison, .ghost{
+    background-position: -55px -18.5px;
+}
+.water{
+    background-position: -55px -37px;
+}

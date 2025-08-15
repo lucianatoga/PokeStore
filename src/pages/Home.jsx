@@ -1,8 +1,8 @@
 import { Box } from "@chakra-ui/react";
 import Cover from "@/components/Cover/Cover";
-import CardsDisplay from "@/components/CardsDisplay/CardsDisplay";
 import { useEffect, useState } from "react";
 import { getBerries, getPokemons } from "@/services/poke.service";
+import CardsPreview from "@/components/CardsDisplay/CardsPreview";
 
 const Home=()=>{
     const [pokemons, setPokemons]=useState([]);
@@ -16,8 +16,8 @@ const Home=()=>{
 
         <Box>
             <Cover/>
-            <CardsDisplay items={pokemons} title={'pokemons'} typeOfTitle={'button'}/>
-            <CardsDisplay items={berries} title={'berries'} typeOfTitle={'button'}/>
+            <CardsPreview items={pokemons} title={'pokemons'}/>
+            <CardsPreview items={berries} title={'berries'}/>
         </Box>
     )
 }

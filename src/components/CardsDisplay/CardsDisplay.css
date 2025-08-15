@@ -1,3 +1,4 @@
+/* GENERAL */
 .cards-display-container{
     flex-direction: column;
     align-items: center;
@@ -12,21 +13,35 @@
     min-height: 80vh;
     gap: .5rem;
 }
-.heading{
-    font-size: 5rem;
+
+.listed-card{
+    width: 10rem;
+    height: 15rem;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    img{
+        min-width: 2.5rem;
+        position: relative;
+        max-width: 5rem;
+    }
+    p{
+        margin: 0;
+        color:rgb(36, 36, 36);;
+        font-size: 10px;
+        position: relative;
+    }
 }
-.title{
+
+/* CARDS PREVIEW */
+.expand-button{
     padding: 0 2rem;
     font-family: "Bangers", system-ui;
     background-color: none;
     color: rgba(182, 60, 38, 0.842) ;
-    
-    /* blue rgba(46, 79, 151, 0.842)  
-    background-color: rgba(255, 234, 47, 0.24);
-    box-shadow: 0  0 10rem  rgba(255, 234, 47, 0.562); */
-}
-
-.expand-button{
     font-size: 7rem;
     border: none;
     position: absolute;
@@ -39,48 +54,73 @@
     transition: all 1s ease-in-out;
 }
 
-/* GENERAL */
-.listed-card{
-    width: 10rem;
-    height: 15rem;
-    cursor: pointer;
-    flex-direction: column;
-    align-items: center;
-    background-image: url('../../assets/pokecard-front.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    img{
-        min-width: 2.5rem;
-        display: none;
-        position: relative;
-        max-width: 5rem;
-    }
+.faced-down-pokemons{
+    background-image: url('../../assets/pokecard-front.png');
     p{
-        display: none;
-        margin: 0;
-        color: black;
-        font-size: 10px;
-        font-weight: 600;
-        position: relative;
         right: 1.3rem;
         top: 1rem;
+        font-weight: 600;
+        display: none;
+    }
+    img{
+        top: 1.5rem;
+        display: none;
     }
 }
-.listed-card:hover{
-    background-image: url('../../assets/pokecard-back.jpg');
+.faced-down-pokemons:hover{
+    background-image: url('../../assets/pokecard-back.png');
+    p, img{
+        display: block;
+    }
 }
-.listed-card:hover p{
-    display:block;
-}
-.listed-card:hover img{
-    display: block;
+.faced-down-berries{
+    background-image: url('../../assets/pokecard-front.png');
+    img{
+        top: 2.5rem;
+        display: none;
+    }
+    p{
+        right: 2.3rem;
+        top: 23px;
+        font-weight: 700;
+        display: none;
+    }
+} 
+.faced-down-berries:hover{
+    background-image: url('../../assets/berry-card.png');
+    p, img{
+        display: block;
+    }
 }
 
-.berries img{
-    top: 2.5rem;
-}
-.pokemons img{
-    top: 1.5rem;
+/* ALL CARDS DISPLAY */
+.heading{
+    padding: 0 2rem;
+    font-family: "Bangers", system-ui;
+    background-color: none;
+    color: rgba(182, 60, 38, 0.842) ;
+    font-size: 5rem;
 }
 
+.faced-up-berries{
+    background-image: url('../../assets/berry-card.png');
+    img{
+        top: 2.5rem;
+    }
+    p{
+        right: 2.3rem;
+        top: 23px;
+        font-weight: 700;
+    }
+}
+.faced-up-pokemons{
+    background-image: url('../../assets/pokecard-back.png');
+    p{
+        right: 1.3rem;
+        top: 1rem;
+        font-weight: 600;
+    }
+    img{
+        top: 1.5rem;
+    }
+}

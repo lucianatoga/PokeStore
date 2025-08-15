@@ -7,3 +7,8 @@
 button{
   cursor: pointer;
 }
+
+.blue-btn{
+  background-color: rgba(52, 97, 194, 0.486);
+  margin: 0.5rem;
+}

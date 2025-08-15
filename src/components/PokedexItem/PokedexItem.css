@@ -1,0 +1,42 @@
+.pokedex-container{
+    width: 100%;
+    height: 70vh;
+    background-image: url('../../assets/pokedex.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    p{
+        position: relative;
+        right: 9.5rem;
+        top: 4.4rem;
+        rotate: -1deg;
+    }
+}
+.carrousel{
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    right: 7.8rem;
+    top: 1.8rem;
+    rotate: -2deg;
+    color: black;
+    gap: 1rem;
+}
+.carrusel-img{
+    width: 7rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        min-width: 3rem;
+    }
+}
+.grayed-out-btn{
+    opacity: .3;
+    pointer-events: none;
+}

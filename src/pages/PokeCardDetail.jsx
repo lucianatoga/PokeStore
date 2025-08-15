@@ -1,4 +1,5 @@
-import PokeCard from "@/components/PokeCard/PokeCard"
+import BerryCard from "@/components/Cards/BerryCard"
+import PokeCard from "@/components/Cards/PokeCard"
 import { getBerryById, getPokemonById } from "@/services/poke.service"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
@@ -8,12 +9,12 @@ const PokeCardDetail=()=>{
     const [item, setItem]=useState();
     const [loading, setLoading]=useState(true);
     useEffect(()=>{
-        type==='pokemons' ? getPokemonById(id).then((item)=>setItem({...item, type:'pokemon'})).catch((e)=>console.error(e)).finally(()=>setLoading(false))
-        : getBerryById(id).then((item)=>setItem({...item, type:'berry'})).catch((e)=>console.error(e)).finally(()=>setLoading(false));
+        type==='pokemons' ? getPokemonById(id).then((item)=>setItem(item)).catch((e)=>console.error(e)).finally(()=>setLoading(false))
+        : getBerryById(id).then((item)=>setItem(item)).catch((e)=>console.error(e)).finally(()=>setLoading(false));
     },[type,id])
     return(
         loading ? <p>loading</p> :
-        <PokeCard item={item}/>
+        type==='berries'? <BerryCard item={item}/> : <PokeCard item={item}/>
     )
 }
 

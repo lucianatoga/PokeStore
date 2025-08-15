@@ -39,9 +39,9 @@ const CartItem=()=>{
                         <b>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</b> 
                         <p>US${item.price} u</p>
                         <div className="qty-input">
-                            <button onClick={()=>{reduceQty({item});}}>-</button>
+                            <button onClick={()=>reduceQty({item})}>-</button>
                             <input type="number"  value={item.quantity} onChange={(e)=>handleInputChange({item},parseInt(e.target.value)) }/>
-                            <button onClick={()=>{incrementQty({item});}}>+</button>
+                            <button onClick={()=>incrementQty({item})}>+</button>
                         </div>
                     </div>
                     <button onClick={()=>removeFromCart({item})}><RiDeleteBin6Line size='1.3rem'/></button>
@@ -55,7 +55,7 @@ const CartItem=()=>{
               <tr><th colSpan={3}>Total: ${totalPrice}</th></tr>
             </tfoot>
           </table>
-          <Button className="checkout-btn" onClick={()=>{navigate('/')}}>Checkout</Button>
+          <Button className="blue-btn" onClick={()=>{navigate('/checkout')}}>Checkout</Button>
       </Flex>
     )
 }

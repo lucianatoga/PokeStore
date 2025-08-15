@@ -1,13 +1,13 @@
 import CartItem from "@/components/CartItem/CartItem";
+import RedirectItem from "@/components/Redirect/RedirectItem";
 import { CartContext } from "@/context/CartContext";
-import { Heading } from "@chakra-ui/react";
 import { useContext } from "react";
 
 const Cart=()=>{
     const {cart}=useContext(CartContext);
-
+    
     return(
-        cart.length<1 ? <Heading size='xl'>CART IS EMPTY</Heading> : <CartItem/>
+        cart.length<1 ? <RedirectItem message={"Your cart is empty."}/> : <CartItem/>
     )
 }
 

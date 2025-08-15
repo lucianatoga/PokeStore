@@ -1,0 +1,8 @@
+.redirect-item{
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    h1{
+        font-size: 2rem;
+    }
+}
