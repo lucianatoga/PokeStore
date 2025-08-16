@@ -9,7 +9,7 @@ const RedirectItem=({message})=>{
         <Flex className="redirect-item">
             <h1>{message}</h1> 
             <div>
-            <Button className="blue-btn" onClick={()=>navigate('/berries')}>Buy Berries</Button>
+            <Button className="red-btn" onClick={()=>navigate('/berries')}>Buy Berries</Button>
             <Button className="blue-btn" onClick={()=>navigate('/pokemons')}>Buy Pokemons</Button> 
             </div>
         </Flex>

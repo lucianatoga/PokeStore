@@ -18,7 +18,7 @@ export const CartProvider=({children})=>{
 
     const removeFromCart=({item})=>{
         setCart((prevCart)=>
-            prevCart.filter((i)=>i.id!==item.id))
+            prevCart.filter((i)=>i.id!==item.id || i.id===item.id && i.type!==item.type))
     }
     const reduceQty=({item})=>{
         if(item.quantity===1){
@@ -26,16 +26,16 @@ export const CartProvider=({children})=>{
         }
         else{
             setCart((prevCart)=>{
-                return prevCart.map((i)=> i.id===item.id ? {...i, quantity:i.quantity-1} : i)
+                return prevCart.map((i)=> i.id===item.id && i.type===item.type ? {...i, quantity:i.quantity-1} : i)
             })
         }
     }
     const incrementQty=({item})=>{
-        setCart((prevCart)=>prevCart.map((i)=>i.id===item.id ? {...i, quantity: i.quantity+1} : i))
+        setCart((prevCart)=>prevCart.map((i)=>i.id===item.id && i.type===item.type ? {...i, quantity: i.quantity+1} : i))
     }
 
     const changeItemQty=({item}, qty)=>{
-        setCart((prevCart)=> prevCart.map((i)=>i.id===item.id ? {...i, quantity: parseInt(qty)} : i))
+        setCart((prevCart)=> prevCart.map((i)=>i.id===item.id && i.type===item.type ? {...i, quantity: parseInt(qty)} : i))
     }
 
     const getTotalPrice=()=>{

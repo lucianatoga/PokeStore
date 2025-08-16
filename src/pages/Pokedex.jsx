@@ -9,8 +9,8 @@ const Pokedex=()=>{
         const pokedexItems=[];
         sales.forEach(purchase => {
             purchase.items.forEach(item=> {
-                if(!pokedexItems.find((i)=>i.id===item.id)){
-                    pokedexItems.push({id:item.id, img:item.img})
+                if(!pokedexItems.find((i)=>i.id===item.id&&i.type===item.type)){
+                    pokedexItems.push({id:item.id, img:item.img, type:item.type})
                 }
             })
         });

@@ -3,13 +3,15 @@ import { BASE_URL } from "./config/api";
 
 export async function getPokemons(limit){
         try{
+            //By default, a list "page" will contain up to 20 resources.
             const response = limit == null ? await fetch( `${BASE_URL}pokemon`) : await fetch( `${BASE_URL}pokemon?limit=${limit}`)
             if(!response.ok){
                 throw new Error(`response status: ${response.status}`);
             }
             const data = await response.json();
             const pokemons= await Promise.all(data.results.map((pokemon)=>getItem(pokemon.url)))
-            return pokemons;
+            //add 'type' property to facilitate further manipulation:
+            return pokemons.map((pokemon)=>({...pokemon, type:'pokemon'}));
         }
         catch (error) {
             console.error(error.message);
@@ -27,7 +29,8 @@ export async function getBerries(limit){
         const data = await response.json();
         const berries=await Promise.all(data.results.map((berry)=> getItem(berry.url)))
         const berriesImg=await Promise.all(berries.map((berry)=>{
-            const berryWithImg=getItem(berry.item.url).then((item)=>({...berry, img: item.sprites.default})).catch((e)=>console.error(e));
+            //add 'type' property as well to facilitate further manipulation:
+            const berryWithImg=getItem(berry.item.url).then((item)=>({...berry, img: item.sprites.default, type:'berry'})).catch((e)=>console.error(e));
             return berryWithImg
         }))
         return berriesImg
@@ -43,7 +46,9 @@ export async function getPokemonById(id){
         if(!response.ok){
             throw new Error(`response status: ${response.status}`)
         } 
-        return await response.json()
+        const pokemon=await response.json()
+        //add 'type' property to facilitate further manipulation:
+        return {...pokemon, type:'pokemon'}
     }
     catch (error) {
         console.error(error.message);
@@ -56,8 +61,9 @@ export async function getBerryById(id){
             throw new Error(`response status: ${response.status}`)
         } 
         const berry= await response.json();
-        const berryItem = await getItem(berry.item.url)
-        return {...berry, img:berryItem.sprites.default};
+        const berryItem = await getItem(berry.item.url);
+        //add 'type' property as well to facilitate further manipulation:
+        return {...berry, img:berryItem.sprites.default, type:'berry'};
     }
     catch (error) {
         console.error(error.message);

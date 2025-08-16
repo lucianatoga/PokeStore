@@ -4,7 +4,7 @@ import './Cover.css'
 
 const Cover=()=>{
     return(
-        <Box className="start">
+        <Box className="cover">
             <Image src={logo} className="logo"/>
         </Box>
     )

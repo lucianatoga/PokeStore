@@ -1,4 +1,4 @@
-import { Box, Flex, Heading } from "@chakra-ui/react"
+import { Flex } from "@chakra-ui/react"
 import './CardsDisplay.css'
 import { useNavigate } from "react-router"
 

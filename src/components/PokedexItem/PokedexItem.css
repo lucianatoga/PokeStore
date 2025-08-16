@@ -12,21 +12,35 @@
     p{
         position: relative;
         right: 9.5rem;
-        top: 4.4rem;
+        top: 3.2rem;
         rotate: -1deg;
     }
+}
+#pokedex-filter{
+    width: 10rem;
+    height: 3rem;
+    padding: 5px;
+    position: relative;
+    left: 8.5rem;
+    top: 1rem;
+    rotate: -3deg;
+    border-radius: 5%;
+    background-color: #242424;
+}
+option{
+    border: none;
 }
 .carrousel{
     flex-direction: column;
     align-items: center;
     position: relative;
     right: 7.8rem;
-    top: 1.8rem;
+    top: .5rem;
     rotate: -2deg;
     color: black;
-    gap: 1rem;
+    gap: .5rem;
 }
-.carrusel-img{
+.img-container{
     width: 7rem;
     height: 5rem;
     display: flex;

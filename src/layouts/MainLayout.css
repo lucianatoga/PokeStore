@@ -4,8 +4,12 @@
     justify-content: center;
     margin: 2rem;
 }
-
-.content-hidden{
+.flex-centered{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.fade-in{
     animation: fadeIn 2s ease;
 }
 @keyframes fadeIn {
@@ -17,15 +21,3 @@
     }
 }
 
-/* 2nd page
-section covered in cards that when hovered over, show a pokemon.
-in the center an "explore" image-button that takes you to the catalog.
-
-3rd page
-berries display
-
-after you buy a pokemon, it's added to your pokedex which you can check
-sidebar has the screen length and no overflow, needs to stay stick to the right of the screen throughout the app.
-figure out the sidebar design
- 
-*/

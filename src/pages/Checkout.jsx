@@ -2,6 +2,7 @@ import CheckoutForm from "@/components/CheckoutForm/CheckoutForm";
 import { useState } from "react";
 import { useContext } from 'react';
 import { CartContext } from '@/context/CartContext';
+import { Flex, Button } from "@chakra-ui/react";
 
 const Checkout=()=>{
     const[isFinalized, setIsFinalized]=useState(false);
@@ -13,14 +14,19 @@ const Checkout=()=>{
             buyerDetails:{name:'', email:'', phone:''}
         }
     );
-    
     useState(()=>{
-        setSaleForm((prevSaleForm)=>({...prevSaleForm, items:cart.map((item)=>({id:item.id, name:item.name, qty:item.quantity, price:item.price, img:item.img||item.sprites.front_default}))}))
+        setSaleForm((prevSaleForm)=>({...prevSaleForm, purchaseId:Date.now(), items:cart.map((item)=>
+            ({id:item.id, name:item.name, qty:item.quantity, price:item.price, img:item.img||item.sprites.front_default, type:item.type})
+        )}))
     })
     
     return(
-        isFinalized ? <h1>Thank you for your purchase</h1> :
-        <CheckoutForm setIsFinalized={setIsFinalized} saleForm={saleForm} setSaleForm={setSaleForm}/>
+        isFinalized ? 
+        <Flex className='flex-centered'>
+            <h1>Thank you for your purchase! Order ID: {saleForm.purchaseId} </h1>
+            <Button className="blue-btn">Open Pokédex</Button>
+        </Flex>
+        : <CheckoutForm setIsFinalized={setIsFinalized} saleForm={saleForm} setSaleForm={setSaleForm}/>
         
     )
 }

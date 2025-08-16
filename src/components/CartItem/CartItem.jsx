@@ -26,7 +26,7 @@ const CartItem=()=>{
             </thead>
             <tbody>
             {cart.map((item)=>(
-              <tr key={item.id}>
+              <tr key={item.type+item.id}>
                 <td>
                   <Flex className='cart-card'>
                     <p>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</p>

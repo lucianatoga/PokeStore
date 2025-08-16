@@ -1,6 +1,6 @@
-import CardsDisplay from "@/components/CardsDisplay/AllCardsDisplay"
+import AllCardsDisplay from "@/components/CardsDisplay/AllCardsDisplay"
 import { getBerries, getPokemons } from "@/services/poke.service"
-import { Box, Button } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
@@ -17,10 +17,10 @@ import { useParams } from "react-router";
     
     return(
       loading ? <p>loading</p> :
-      <Box>
-        <CardsDisplay items={items} title={type}/>
-        <Button variant='surface' onClick={()=>setItemsCount(itemsCount+21)}>Load more</Button>
-      </Box>
+      <Flex className="flex-centered">
+        <AllCardsDisplay items={items} title={type}/>
+        <Button className="red-btn" onClick={()=>setItemsCount(itemsCount+21)}>Load more</Button>
+      </Flex>
     )
   }
 
