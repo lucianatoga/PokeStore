@@ -6,6 +6,7 @@ import Cart from "@/pages/Cart";
 import PokeCardDetail from "@/pages/PokeCardDetail";
 import CardsXType from "@/pages/CardsXType";
 import Checkout from "@/pages/Checkout";
+import Search from "@/pages/Search";
 
 const routes = [
     {
@@ -35,6 +36,10 @@ const routes = [
             {
                 path:'/checkout',
                 element:<Checkout/>
+            },
+            {
+                path:'/search/:key',
+                element:<Search/>
             }
         ]
     }

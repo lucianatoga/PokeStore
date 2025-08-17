@@ -4,7 +4,7 @@ import { BASE_URL } from "./config/api";
 export async function getPokemons(limit){
         try{
             //By default, a list "page" will contain up to 20 resources.
-            const response = limit == null ? await fetch( `${BASE_URL}pokemon`) : await fetch( `${BASE_URL}pokemon?limit=${limit}`)
+            const response = limit==null ? await fetch( `${BASE_URL}pokemon`) : await fetch( `${BASE_URL}pokemon?limit=${limit}`);
             if(!response.ok){
                 throw new Error(`response status: ${response.status}`);
             }
@@ -15,6 +15,7 @@ export async function getPokemons(limit){
         }
         catch (error) {
             console.error(error.message);
+            return error.message;
         }
     
 }
@@ -37,6 +38,7 @@ export async function getBerries(limit){
     }
     catch (error) {
         console.error(error.message);
+        return error.message;
     }
 }
 
@@ -44,21 +46,22 @@ export async function getPokemonById(id){
     try{
         const response = await fetch(`${BASE_URL}/pokemon/${id}`);
         if(!response.ok){
-            throw new Error(`response status: ${response.status}`)
+            throw new Error(response.status);
         } 
         const pokemon=await response.json()
         //add 'type' property to facilitate further manipulation:
         return {...pokemon, type:'pokemon'}
     }
     catch (error) {
-        console.error(error.message);
+        console.log(error.message);
+        return error.message;
     }
 }
 export async function getBerryById(id){
     try{
         const response = await fetch(`${BASE_URL}/berry/${id}`);
         if(!response.ok){
-            throw new Error(`response status: ${response.status}`)
+            throw new Error(response.status)
         } 
         const berry= await response.json();
         const berryItem = await getItem(berry.item.url);
@@ -66,7 +69,8 @@ export async function getBerryById(id){
         return {...berry, img:berryItem.sprites.default, type:'berry'};
     }
     catch (error) {
-        console.error(error.message);
+        console.log(error.message);
+        return error.message;
     }
 }
 
@@ -99,3 +103,41 @@ export async function getTypes(){
         console.error(error.message);
     }
 }
+
+export async function searchItem(key){
+        try{
+            //search individually in case the key provided is an exact match
+            let pokemon = await getPokemonById(key);
+            if (pokemon !== '404') return pokemon;
+
+            let berry = await getBerryById(key);
+            if (berry !== '404') return berry;
+
+            //search bewtween berries
+            const berries = await getBerries(100);
+            let berriesFound=[];
+            for (let item of berries){
+                if (item.name.includes(key)){
+                    berriesFound.push(item);
+                }
+            }
+            if(berriesFound.length>0) return berriesFound;
+
+            //search between pokemons in batches
+            const pokemons= await getPokemons(600);
+            let pokemonsFound=[];
+            for( let item of pokemons){
+                if(item.name.includes(key)){
+                    pokemonsFound.push(item);
+                }
+            }
+            if(pokemonsFound.length>0) return pokemonsFound;
+            
+            //if there's no match at all
+            return undefined;
+        }
+        catch (error) {
+            console.error(error.message);
+            return undefined;
+        }
+    }

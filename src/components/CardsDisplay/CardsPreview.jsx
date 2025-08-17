@@ -21,8 +21,8 @@ const CardsPreview=({items, title})=>{
                     {items.map((item)=>{
                         const img =item.img || item.sprites.front_default;
                         return(
-                            <Flex key={item.id} onClick={()=>navigate(`/${title}/${item.id}`)} className={`listed-card faced-down-${title} `}>
-                                <p>{item.name.charAt(0).toUpperCase() + item.name.slice(1)} {title ==='berries'? 'Berry' :''}</p>
+                            <Flex key={item.id} onClick={()=>navigate(`/${item.type}/${item.id}`)} className={`listed-card faced-down-${item.type} `}>
+                                <p>{item.name.charAt(0).toUpperCase() + item.name.slice(1)} {item.type ==='berry' ? 'Berry' :''}</p>
                                 <img src={img}/>
                             </Flex>
                         )

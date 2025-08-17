@@ -1,20 +1,23 @@
 import { Button, CloseButton, Drawer, Portal, Input } from "@chakra-ui/react"
 import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
+import { useNavigate } from "react-router";
 
 const SearchItem = ({children}) => {
     const [search, setSearch]=useState();
+    const navigate=useNavigate();
+    const [open, setOpen]=useState()
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log(search)
-        //navgate to a page that displays the cards that contain the word searched: (navigate('/search/key-word'))
-        //create a page that reders AllCardsDisplay 
-        //It'll call a function that will search items that contains the key word (gotten from params) in their name OR
-        // call call both functions, getBerries and getPokemons, and filter by the key word
+        if(search!=undefined){
+          navigate(`/search/${search}`)
+          setOpen(false)
+        }
     }
+
   return (
-    <Drawer.Root placement={'top'}>
-      <Drawer.Trigger asChild>
+    <Drawer.Root placement={'top'} open={open} onPointerDownOutside={()=>setOpen(false)}>
+      <Drawer.Trigger asChild onClick={()=>setOpen(true)}>
         {children}
       </Drawer.Trigger>
       <Portal>
@@ -28,7 +31,7 @@ const SearchItem = ({children}) => {
                 </form>
             </Drawer.Body>
             <Drawer.CloseTrigger asChild>
-              <CloseButton size="sm"/>
+              <CloseButton size="sm"  onClick={()=>setOpen(false)}/>
             </Drawer.CloseTrigger>
           </Drawer.Content>
         </Drawer.Positioner>

@@ -9,12 +9,12 @@ const PokeCardDetail=()=>{
     const [item, setItem]=useState();
     const [loading, setLoading]=useState(true);
     useEffect(()=>{
-        type==='pokemons' ? getPokemonById(id).then((item)=>setItem(item)).catch((e)=>console.error(e)).finally(()=>setLoading(false))
+        type==='pokemon' ? getPokemonById(id).then((item)=>setItem(item)).catch((e)=>console.error(e)).finally(()=>setLoading(false))
         : getBerryById(id).then((item)=>setItem(item)).catch((e)=>console.error(e)).finally(()=>setLoading(false));
     },[type,id])
     return(
         loading ? <p>loading</p> :
-        type==='berries'? <BerryCard item={item}/> : <PokeCard item={item}/>
+        type==='berry'? <BerryCard item={item}/> : <PokeCard item={item}/>
     )
 }
 
