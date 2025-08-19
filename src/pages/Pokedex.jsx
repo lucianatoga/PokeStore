@@ -1,3 +1,4 @@
+import LoadingCircle from "@/components/LoadingCircle/LoadingCircle";
 import PokedexItem from "@/components/PokedexItem/PokedexItem"
 import RedirectItem from "@/components/Redirect/RedirectItem";
 import { useEffect, useMemo, useState } from "react";
@@ -19,7 +20,7 @@ const Pokedex=()=>{
 
     return(
         sales.length===0 ? <RedirectItem message={"You haven't bought any cards."}/>
-        : pokedex.length===0 ? <p>loading</p> : <PokedexItem items={pokedex}/>
+        : pokedex.length===0 ? <LoadingCircle/> : <PokedexItem items={pokedex}/>
     )
 }
 

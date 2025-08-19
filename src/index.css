@@ -16,3 +16,8 @@ button{
   background-color: rgba(182, 60, 38, 0.842);
   margin: 0.5rem;
 }
+
+.grayed-out-btn{
+    opacity: .3;
+    pointer-events: none;
+}

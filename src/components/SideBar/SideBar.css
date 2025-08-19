@@ -18,7 +18,7 @@
     cursor: pointer;
     justify-items: center;
     svg{
-        color: rgb(247, 71, 40);
+        color: rgb(236, 62, 31);
     }
     img{
         width: 1.5rem;
@@ -27,7 +27,7 @@
         position: relative;
         bottom: 3rem;
         left: 1rem;
-        color: rgb(247, 71, 40);
+        color: rgb(236, 62, 31);
         border: 1px solid rgba(255, 255, 255, 0.26);
         background-color: rgba(52, 97, 194, 0.644) ;
         width: 1.5rem;

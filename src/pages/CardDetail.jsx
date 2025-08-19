@@ -1,10 +1,11 @@
 import BerryCard from "@/components/Cards/BerryCard"
 import PokeCard from "@/components/Cards/PokeCard"
+import LoadingCircle from "@/components/LoadingCircle/LoadingCircle"
 import { getBerryById, getPokemonById } from "@/services/poke.service"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 
-const PokeCardDetail=()=>{
+const CardDetail=()=>{
     const {type,id}=useParams();
     const [item, setItem]=useState();
     const [loading, setLoading]=useState(true);
@@ -13,9 +14,9 @@ const PokeCardDetail=()=>{
         : getBerryById(id).then((item)=>setItem(item)).catch((e)=>console.error(e)).finally(()=>setLoading(false));
     },[type,id])
     return(
-        loading ? <p>loading</p> :
+        loading ? <LoadingCircle/> :
         type==='berry'? <BerryCard item={item}/> : <PokeCard item={item}/>
     )
 }
 
-export default PokeCardDetail
+export default CardDetail

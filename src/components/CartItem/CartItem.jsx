@@ -4,6 +4,7 @@ import { useContext } from "react"
 import { RiDeleteBin6Line } from "react-icons/ri"
 import './CartItem.css'
 import { useNavigate } from "react-router"
+import ThumbnailCard from "../ThumbnailCard.jsx/ThumbnailCard"
 
 const CartItem=()=>{
     const {cart, getTotalPrice, removeFromCart, reduceQty, incrementQty, changeItemQty}=useContext(CartContext);
@@ -28,10 +29,7 @@ const CartItem=()=>{
             {cart.map((item)=>(
               <tr key={item.type+item.id}>
                 <td>
-                  <Flex className='cart-card'>
-                    <p>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</p>
-                    <img src={item.img || item.sprites.front_default}/>
-                  </Flex>
+                  <ThumbnailCard item={item} size={'s'}/>
                 </td>
                 <td>
                   <Flex justifyContent='space-evenly'>

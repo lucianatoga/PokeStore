@@ -50,7 +50,3 @@ option{
         min-width: 3rem;
     }
 }
-.grayed-out-btn{
-    opacity: .3;
-    pointer-events: none;
-}

@@ -3,7 +3,7 @@ import MainLayout from "@/layouts/MainLayout";
 import { createBrowserRouter } from "react-router";
 import Pokedex from "@/pages/Pokedex";
 import Cart from "@/pages/Cart";
-import PokeCardDetail from "@/pages/PokeCardDetail";
+import CardDetail from "@/pages/CardDetail";
 import CardsXType from "@/pages/CardsXType";
 import Checkout from "@/pages/Checkout";
 import Search from "@/pages/Search";
@@ -27,7 +27,7 @@ const routes = [
             },
             {
                 path:'/:type/:id',
-                element:<PokeCardDetail/>
+                element:<CardDetail/>
             },
             {
                 path:'/:type',

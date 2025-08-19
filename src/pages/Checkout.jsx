@@ -3,9 +3,11 @@ import { useState } from "react";
 import { useContext } from 'react';
 import { CartContext } from '@/context/CartContext';
 import { Flex, Button } from "@chakra-ui/react";
+import { useNavigate } from "react-router";
 
 const Checkout=()=>{
     const[isFinalized, setIsFinalized]=useState(false);
+    const navigate=useNavigate();
     const{ cart}=useContext(CartContext);
     const [saleForm, setSaleForm]=useState(
         {
@@ -24,7 +26,7 @@ const Checkout=()=>{
         isFinalized ? 
         <Flex className='flex-centered'>
             <h1>Thank you for your purchase! Order ID: {saleForm.purchaseId} </h1>
-            <Button className="blue-btn">Open Pokédex</Button>
+            <Button className="blue-btn" onClick={()=>navigate('/pokedex')}>Open Pokédex</Button>
         </Flex>
         : <CheckoutForm setIsFinalized={setIsFinalized} saleForm={saleForm} setSaleForm={setSaleForm}/>
         
