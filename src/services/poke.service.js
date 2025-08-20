@@ -1,4 +1,3 @@
-
 import { BASE_URL } from "./config/api";
 
 export async function getPokemons(limit){
@@ -11,7 +10,7 @@ export async function getPokemons(limit){
             const data = await response.json();
             const pokemons= await Promise.all(data.results.map((pokemon)=>getItem(pokemon.url)))
             //add 'type' property to facilitate further manipulation:
-            return pokemons.map((pokemon)=>({...pokemon, type:'pokemon'}));
+            return pokemons.map((pokemon)=>({...pokemon, img:pokemon.sprites.front_default, type:'pokemon'}));
         }
         catch (error) {
             console.error(error.message);
@@ -48,15 +47,20 @@ export async function getPokemonById(id){
         if(!response.ok){
             throw new Error(response.status);
         } 
-        const pokemon=await response.json()
+        const pokemon=await response.json();
+        const held_item=pokemon.held_items.length>0 ? await getItem(pokemon.held_items[0].item.url) : null;
+        const ability=await getItem(pokemon.abilities[0].ability.url);
         //add 'type' property to facilitate further manipulation:
-        return {...pokemon, type:'pokemon'}
+        return {...pokemon, img:pokemon.sprites.front_default, held_items:held_item, abilities:{id:ability.id, name:ability.name, description:ability.effect_entries[0].effect}, type:'pokemon'}
     }
     catch (error) {
         console.log(error.message);
         return error.message;
     }
 }
+{/* getAbility(pokemon.abilities[0].ability.url)=>ability.id, name, effect_entries[0].effect
+    getItem(pokemon.held_items[0].item.url)=>item.id, name, sprites.default
+*/}
 export async function getBerryById(id){
     try{
         const response = await fetch(`${BASE_URL}/berry/${id}`);
@@ -88,6 +92,7 @@ export async function getItem(url){
         console.error(error.message);
     }
 }
+
 
 export async function getTypes(){
     try{

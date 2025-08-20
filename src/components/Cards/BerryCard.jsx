@@ -5,12 +5,11 @@ import { CartContext } from '@/context/CartContext';
 
 const BerryCard=({item})=>{
     const {addToCart}=useContext(CartContext);
-    const img = item.img;
     return(
         <Flex className='card-container'>
             <Flex className='detail-card berry'>
                 <p>{item.name.charAt(0).toUpperCase() + item.name.slice(1)} Berry</p>
-                <img src={img}/>
+                <img src={item.img}/>
             </Flex>
             <Button color onClick={()=>addToCart({item})}>Add to cart</Button>
         </Flex>
