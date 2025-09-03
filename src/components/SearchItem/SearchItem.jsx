@@ -2,6 +2,7 @@ import { Button, CloseButton, Drawer, Portal, Input } from "@chakra-ui/react"
 import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { useNavigate } from "react-router";
+import './SearchItem.css';
 
 const SearchItem = ({children}) => {
     const [search, setSearch]=useState();
@@ -23,15 +24,15 @@ const SearchItem = ({children}) => {
       <Portal>
         <Drawer.Backdrop />
         <Drawer.Positioner>
-          <Drawer.Content height={'7rem'} >
-            <Drawer.Body alignContent={'end'} >
-                <form onSubmit={(e)=>handleSubmit(e)} style={{display:'flex',gap:'1rem', margin:'0 2rem 10px 0'}}>
-                    <Input type="text" placeholder="type a name" onChange={(e)=>setSearch(e.target.value)}/>
-                    <Button variant={'outline'} type="submit"><IoIosSearch/></Button>
+          <Drawer.Content className="search-drawer">
+            <Drawer.Body>
+                <form onSubmit={(e)=>handleSubmit(e)}>
+                    <Input id='search' type="text" placeholder="type a name"  onChange={(e)=>setSearch(e.target.value)}/>
+                    <Button className="blue-btn" type="submit"><IoIosSearch/></Button>
                 </form>
             </Drawer.Body>
             <Drawer.CloseTrigger asChild>
-              <CloseButton size="sm"  onClick={()=>setOpen(false)}/>
+              <CloseButton size="xs" variant={'solid'} onClick={()=>setOpen(false)}/>
             </Drawer.CloseTrigger>
           </Drawer.Content>
         </Drawer.Positioner>

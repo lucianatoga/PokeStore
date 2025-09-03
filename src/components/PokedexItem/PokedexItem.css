@@ -24,12 +24,11 @@
     left: 8.5rem;
     top: 1rem;
     rotate: -3deg;
-    border-radius: 5%;
     background-color: #242424;
+    
 }
-option{
-    border: none;
-}
+
+
 .carrousel{
     flex-direction: column;
     align-items: center;
@@ -46,6 +45,7 @@ option{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     img{
         min-width: 3rem;
     }

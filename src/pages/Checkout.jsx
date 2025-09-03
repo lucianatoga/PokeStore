@@ -18,9 +18,9 @@ const Checkout=()=>{
     );
     useState(()=>{
         setSaleForm((prevSaleForm)=>({...prevSaleForm, purchaseId:Date.now(), items:cart.map((item)=>
-            ({id:item.id, name:item.name, qty:item.quantity, price:item.price, img:item.img||item.sprites.front_default, type:item.type})
+            ({id:item.id, name:item.name, qty:item.quantity, price:item.price, img:item.img, type:item.type})
         )}))
-    })
+    },[])
     
     return(
         isFinalized ? 

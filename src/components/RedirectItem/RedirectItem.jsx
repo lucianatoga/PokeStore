@@ -8,10 +8,10 @@ const RedirectItem=({message})=>{
     return(
         <Flex className="redirect-item">
             <h1>{message}</h1> 
-            <div>
+            <Flex className="btns-container">
             <Button className="red-btn" onClick={()=>navigate('/berries')}>Buy Berries</Button>
             <Button className="blue-btn" onClick={()=>navigate('/pokemons')}>Buy Pokemons</Button> 
-            </div>
+            </Flex>
         </Flex>
     )
 }

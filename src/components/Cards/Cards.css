@@ -1,10 +1,9 @@
+/* GENERAL */
 .card-container{
-    width:30rem;
-    height: 23rem;
+    width:35rem;
+    min-height: 23rem;
     justify-content: space-between;
-    
 }
-
 .detail-card{
     width: 18rem;
     height: 22rem;
@@ -17,7 +16,6 @@
     color: rgb(36, 36, 36);
     p{
         position: relative;
-        font-weight: 600;
         font-size: 14px;
     }
     img{
@@ -26,9 +24,21 @@
         
     }
 }
+.item-info{
+    width: 14rem;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 10px;
+    svg{
+        color: white;
+    }
+}
 
+/* POKEMON SPECIFIC */
 .pokemon{
     background-image: url('../../assets/pokecard-back.png');
+    p{
+        font-weight: 600;}
     img{
         top:1.5rem;
         min-width: 7rem;
@@ -41,36 +51,6 @@
     right: 3.5rem;
     top: 4rem;
 }
-.pokemon-info{
-    height: 100%;
-    flex-direction: column;
-    align-items: right;
-    justify-content: center;
-    gap: 2rem;
-    Button{
-        margin-top: 3rem;
-    }
-    
-}
-.pokemon-item{
-    flex-direction: column;
-    
-
-}
-
-.berry{
-    background-image: url('../../assets/berry-card.png');
-    p{
-        right: 3.9rem;
-        top: 14px;
-        font-size: 15px;
-    }
-    img{
-        top: 3rem;
-        min-width: 4rem
-    }
-}
-
 .energy-item{
     width: 1.2rem;
     height: 1.2rem;
@@ -114,4 +94,19 @@
 }
 .water{
     background-position: -55px -37px;
+}
+
+/* BERRY SPECIFIC */
+.berry{
+    background-image: url('../../assets/berry-card.png');
+    p{
+        right: 3.9rem;
+        top: 14px;
+        font-size: 15px;
+        font-weight: 700;
+    }
+    img{
+        top: 3rem;
+        min-width: 4rem
+    }
 }

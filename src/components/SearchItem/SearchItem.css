@@ -1,0 +1,9 @@
+.search-drawer{
+    height: 5rem;
+    background-color: #242424;
+    form{
+        display: flex;
+        gap: 1rem;
+        margin: 0 2rem 10px 0;
+    }
+}

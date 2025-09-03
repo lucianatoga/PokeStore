@@ -50,8 +50,10 @@ export async function getPokemonById(id){
         const pokemon=await response.json();
         const held_item=pokemon.held_items.length>0 ? await getItem(pokemon.held_items[0].item.url) : null;
         const ability=await getItem(pokemon.abilities[0].ability.url);
+        const ability_desc=(ability.effect_entries.filter((entry)=>entry.language.name==='en'))[0].effect||'';
+        const species=await getItem(pokemon.species.url);
         //add 'type' property to facilitate further manipulation:
-        return {...pokemon, img:pokemon.sprites.front_default, held_items:held_item, abilities:{id:ability.id, name:ability.name, description:ability.effect_entries[0].effect}, type:'pokemon'}
+        return {...pokemon, img:pokemon.sprites.front_default, held_items:held_item, abilities:{id:ability.id, name:ability.name, description:ability_desc}, species:{...pokemon.species, evolves_from:species.evolves_from_species}, type:'pokemon'}
     }
     catch (error) {
         console.log(error.message);

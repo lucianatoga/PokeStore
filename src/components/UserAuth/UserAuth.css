@@ -1,0 +1,10 @@
+.auth-drawer{
+    width: 18rem;
+    background-color: #242424;
+    padding-top: 2rem;
+    
+}
+.form-container{
+    flex-direction: column;
+    gap: 3rem;
+}

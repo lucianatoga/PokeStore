@@ -2,7 +2,7 @@ import { Box, Button, Heading, Input } from '@chakra-ui/react';
 import './CheckoutForm.css'
 import { useContext, useState } from 'react';
 import { CartContext } from '@/context/CartContext';
-import RedirectItem from '../Redirect/RedirectItem';
+import RedirectItem from '../RedirectItem/RedirectItem';
 
 const CheckoutForm=({setIsFinalized, saleForm, setSaleForm})=>{
     const{ setCart}=useContext(CartContext);
@@ -11,7 +11,7 @@ const CheckoutForm=({setIsFinalized, saleForm, setSaleForm})=>{
     const handleSubmit=(e)=>{
         e.preventDefault();
         try{
-            if(saleForm.items.length>1){
+            if(saleForm.items.length>=1){
                 const sales=JSON.parse(localStorage.getItem('sales'))||[];
                 sales.push(saleForm);
                 localStorage.setItem('sales', JSON.stringify(sales));
@@ -26,15 +26,14 @@ const CheckoutForm=({setIsFinalized, saleForm, setSaleForm})=>{
             console.error(error.message);
         }
     }
-
     return(
         error ? <RedirectItem message={"You didn't select any cards"}/> :
         <Box className="checkout-form-container">
             <h1>Fill the form to complete your purchase:</h1>
             <form className="checkout-form" onSubmit={(e)=>handleSubmit(e)}>
-                <Input type="text" variant={'subtle'} placeholder='Full Name' onChange={(e)=>setSaleForm((prevForm)=>({...prevForm, buyerDetails:{...prevForm.buyerDetails, name:e.target.value}}))}/>
-                <Input type="email" variant={'subtle'} placeholder='Email' onChange={(e)=>setSaleForm((prevForm)=>({...prevForm, buyerDetails:{...prevForm.buyerDetails, email:e.target.value}}))}/>
-                <Input type="number" variant={'subtle'} placeholder='Phone Number' onChange={(e)=>setSaleForm((prevForm)=>({...prevForm, buyerDetails:{...prevForm.buyerDetails, phone:e.target.value}}))}/>
+                <Input type="text" variant={'subtle'} placeholder='Full Name' onChange={(e)=>setSaleForm((prevForm)=>({...prevForm, buyerDetails:{...prevForm.buyerDetails, name:e.target.value}}))} required/>
+                <Input type="email" variant={'subtle'} placeholder='Email' onChange={(e)=>setSaleForm((prevForm)=>({...prevForm, buyerDetails:{...prevForm.buyerDetails, email:e.target.value}}))} required/>
+                <Input type="number" variant={'subtle'} placeholder='Phone Number' onChange={(e)=>setSaleForm((prevForm)=>({...prevForm, buyerDetails:{...prevForm.buyerDetails, phone:e.target.value}}))} required/>
                 <Button className='blue-btn' type='submit'>Buy</Button>
             </form>
         </Box>

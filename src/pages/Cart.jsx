@@ -1,5 +1,5 @@
 import CartItem from "@/components/CartItem/CartItem";
-import RedirectItem from "@/components/Redirect/RedirectItem";
+import RedirectItem from "@/components/RedirectItem/RedirectItem";
 import { CartContext } from "@/context/CartContext";
 import { useContext } from "react";
 
