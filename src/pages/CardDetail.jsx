@@ -1,7 +1,7 @@
 import BerryCard from "@/components/Cards/BerryCard"
 import PokeCard from "@/components/Cards/PokeCard"
 import LoadingCircle from "@/components/LoadingCircle/LoadingCircle"
-import { getBerryById, getPokemonById } from "@/services/poke.service"
+import { getBerryById, getPokemonById } from "@/services/pokeapi.service"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 

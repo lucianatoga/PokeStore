@@ -1,16 +1,25 @@
 import { AuthContext } from "@/context/AuthContext";
-import { Button, CloseButton, Drawer, Flex, Heading, Portal } from "@chakra-ui/react"
+import { Button, CloseButton, Drawer, Flex, Heading, Input, Portal } from "@chakra-ui/react"
 import { useContext, useState } from "react";
-import LogInForm from "../UserForm/UserForm";
-import { signOut } from "firebase/auth";
+import { MdEdit, MdDone } from "react-icons/md";
+import LogInForm from "../UserForms/LogInForm";
+import SignUpForm from "../UserForms/SignUpForm";
+import { signOut, updateProfile } from "firebase/auth";
 import { auth } from "@/services/config/firebase";
-import './UserAuth.css'
+import './UserAuth.css';
 
 const UserAuth=({children})=>{
     const [open, setOpen]=useState();
     const {user}=useContext(AuthContext);
     const [newUser, setNewUser]=useState(false);
-    const [success, setSuccess]=useState(null);
+    const [newName, setNewName]=useState();
+    const [edit, setEdit]=useState(false);
+    const [error, setError]=useState();
+
+    const editProfile=(e)=>{
+      e.preventDefault();
+      updateProfile(user,{displayName:newName}).then(()=>setEdit(false)).catch((e)=>setError(e.code))
+    }
 
     return (
         <Drawer.Root placement={'end'} open={open} onPointerDownOutside={()=>setOpen(false)}>
@@ -24,27 +33,19 @@ const UserAuth=({children})=>{
                 <Drawer.Body>
                     {user ? 
                     <Flex className="form-container">
-                      <Heading size='xl'>Hi {`${user.name!==undefined? user.name : user.email.split('@')[0]}!`}</Heading>
+                      {edit ?
+                      <form onSubmit={(e)=>editProfile(e)}>
+                        <Input type="text" placeholder="enter your name" onChange={(e)=>setNewName(e.target.value)}/>
+                        <Button type="submit" className="blue-btn"><MdDone/></Button>
+                        <span>{error}</span>
+                      </form> :
+                      <Flex className="btns-container">
+                        <Heading size='xl'>Hi {`${user.displayName!==undefined&&user.displayName!==null? user.displayName : user.email.split('@')[0]}!`}</Heading>
+                        <Button size={'sm'} variant={'plain'} onClick={()=>setEdit(true)}><MdEdit color="white"/></Button>
+                      </Flex>}
                       <Button variant={'subtle'} onClick={()=>{signOut(auth); setNewUser(false)}}>Sign out</Button>
                     </Flex> :
-                    newUser ? 
-                    <Flex className="form-container">
-                      <Heading size={'lg'}>Sign up:</Heading>
-                      <LogInForm newUser={newUser} success={success} setSuccess={setSuccess}/>
-                      <Flex className="btns-container">
-                        <p>Already have an account?</p>
-                        <Button variant={'subtle'} size={'xs'} onClick={()=>{setNewUser(false);setSuccess(null)}}>Log in</Button>
-                      </Flex>
-                    </Flex>
-                    :
-                    <Flex className="form-container">
-                      <Heading size={'lg'}>Log in:</Heading>
-                      <LogInForm newUser={newUser} success={success} setSuccess={setSuccess}/>
-                      <Flex className="btns-container">
-                        <p>Don't have an account?</p>
-                        <Button variant={'subtle'} size={'xs'} onClick={()=>{setNewUser(true);setSuccess(null)}}>Sign up</Button>
-                      </Flex>
-                    </Flex>}
+                    newUser? <SignUpForm setNewUser={setNewUser}/>: <LogInForm setNewUser={setNewUser}/>}
                 </Drawer.Body>
                 <Drawer.CloseTrigger asChild>
                   <CloseButton size="sm"  onClick={()=>setOpen(false)}/>

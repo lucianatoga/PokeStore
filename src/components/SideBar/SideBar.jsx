@@ -35,9 +35,8 @@ const SideBar=()=>{
                 <button className="floating-btn"><IoIosSearch size='1.8rem'/></button>
             </SearchItem>
             <UserAuth>
-                <button className="floating-btn"><RiUserAddLine size={'1.6rem'}/></button>
+                <button className="floating-btn">{user ? <RiUserFollowLine size={'1.6rem'}/> : <RiUserAddLine size={'1.6rem'}/>}</button>
             </UserAuth>
-            {/* if there's a user, show this icon instead: RiUserFollowLine  */}
             
         </Flex>
     )

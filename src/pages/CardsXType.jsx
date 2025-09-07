@@ -1,6 +1,6 @@
 import AllCardsDisplay from "@/components/CardsDisplay/AllCardsDisplay"
 import LoadingCircle from "@/components/LoadingCircle/LoadingCircle";
-import { getBerries, getPokemons } from "@/services/poke.service"
+import { getBerries, getPokemons } from "@/services/pokeapi.service"
 import { Button, Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";

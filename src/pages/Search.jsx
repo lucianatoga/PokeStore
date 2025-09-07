@@ -1,6 +1,6 @@
 import AllCardsDisplay from "@/components/CardsDisplay/AllCardsDisplay"
 import LoadingCircle from "@/components/LoadingCircle/LoadingCircle";
-import { searchItem } from "@/services/poke.service";
+import { searchItem } from "@/services/pokeapi.service";
 import { Flex, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router";

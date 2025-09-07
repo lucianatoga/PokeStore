@@ -1,7 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import Cover from "@/components/Cover/Cover";
 import { useEffect, useState } from "react";
-import { getBerries, getPokemons } from "@/services/poke.service";
+import { getBerries, getPokemons } from "@/services/pokeapi.service";
 import CardsPreview from "@/components/CardsDisplay/CardsPreview";
 import LoadingCircle from "@/components/LoadingCircle/LoadingCircle";
 

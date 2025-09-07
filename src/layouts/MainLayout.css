@@ -4,12 +4,7 @@
     justify-content: center;
     margin: 2rem;
 }
-.flex-centered{
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    min-height: 60vh;
-}
+
 .fade-in{
     animation: fadeIn 2s ease;
 }

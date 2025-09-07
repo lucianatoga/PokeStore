@@ -8,7 +8,7 @@ export const CartProvider=({children})=>{
     const addToCart=({item})=>{
         setCart((prevCart)=>{
             if(prevCart.find((i)=>i.id===item.id && i.type===item.type)){ 
-                return(prevCart.map((i)=>i.id===item.id && i.type===item.type ? {...i, quantity:i.quantity+1, price:100} : i))
+                return(prevCart.map((i)=>i.id===item.id && i.type===item.type ? {...i, quantity:i.quantity+1} : i))
             } 
              else{
                 return([...prevCart, {...item, quantity:1, price:100}])

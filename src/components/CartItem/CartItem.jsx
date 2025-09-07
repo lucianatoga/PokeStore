@@ -53,6 +53,7 @@ const CartItem=()=>{
               <tr><th colSpan={3}>Total: ${totalPrice}</th></tr>
             </tfoot>
           </table>
+          <b>Beware: If you want to save the pokemons you buy in your Pokedex, you need to be logged in at the time of the purchase. Otherwise, they won't be saved.</b>
           <Button className="blue-btn" onClick={()=>{navigate('/checkout')}}>Checkout</Button>
       </Flex>
     )

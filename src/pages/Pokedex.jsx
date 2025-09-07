@@ -2,38 +2,40 @@ import LoadingCircle from "@/components/LoadingCircle/LoadingCircle";
 import PokedexItem from "@/components/PokedexItem/PokedexItem"
 import RedirectItem from "@/components/RedirectItem/RedirectItem";
 import { AuthContext } from "@/context/AuthContext";
-import { Box, Heading } from "@chakra-ui/react";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useGetUserPokedexItems } from "@/hooks/useGetUserPokedexItems";
+import { Heading } from "@chakra-ui/react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 const Pokedex=()=>{
-    const [pokedex, setPokedex]=useState([]);
-    const sales = useMemo(()=>JSON.parse(localStorage.getItem('sales'))||[],[]);
+   const [pokedex, setPokedex]=useState([]);
+    const {sales, loading, error}=useGetUserPokedexItems();
     const {user}=useContext(AuthContext);
     const navigate=useNavigate();
 
     useEffect(()=>{
-        if(!user){
+        if(!user||error){
             setTimeout(() => {
             navigate('/');
-            }, 2000);
+            }, 2500);
         }
-        const pokedexItems=[];
-        sales.forEach(purchase => {
-            purchase.items.forEach(item=> {
-                if(!pokedexItems.find((i)=>i.id===item.id&&i.type===item.type)){
-                    pokedexItems.push({id:item.id, img:item.img, type:item.type})
-                }
-            })
-        });
-        setPokedex(pokedexItems);
-    },[sales, user])
+        else if(Array.isArray(sales)){
+            try{
+                setPokedex(sales);
+            }
+            catch (error) {
+                console.error(error.message);
+            }
+        }
+        
+    },[sales, user, error])
 
     return(
         user ?
-        sales.length===0 ? <RedirectItem message={"You haven't bought any cards."}/>
-        : pokedex.length===0 ? <LoadingCircle/> : <PokedexItem items={pokedex}/>
-        : <Heading size={'lg'}>You don't have access. Redirecting...</Heading>
+        loading ? <LoadingCircle/> : 
+        error ? <Heading size={'lg'}>Sorry, an error occurred. Redirecting...</Heading> :
+        pokedex.length===0 ? <RedirectItem message={"You haven't bought any cards."}/> :  <PokedexItem items={pokedex}/>
+        : <Heading size={'lg'}>Please login to view your Pokedex. Redirecting...</Heading>
     )
 }
 
