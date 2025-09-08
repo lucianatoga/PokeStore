@@ -2,7 +2,7 @@ import { ProgressCircle } from "@chakra-ui/react"
 
 const LoadingCircle=()=>{
     return(
-        <ProgressCircle.Root value={null} size="md" colorPalette={'red'}>
+        <ProgressCircle.Root value={null} size="md" colorPalette={'red'} alignSelf={'center'}>
             <ProgressCircle.Circle css={{'--thickness': '3px'}} > 
                 <ProgressCircle.Track />
                 <ProgressCircle.Range  />

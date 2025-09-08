@@ -7,3 +7,7 @@
     flex-direction: column;
     gap: 3rem;
 }
+.error-msg{
+    background-color: #ff4d4d;
+    align-self: center;
+}

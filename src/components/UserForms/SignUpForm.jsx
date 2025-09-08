@@ -3,20 +3,21 @@ import { Button, Input, Field, Flex, Heading } from "@chakra-ui/react"
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import './UserForms.css'
+import LoadingCircle from "../LoadingCircle/LoadingCircle";
 
 const SignUpForm=({setNewUser})=>{
     const [userForm, setUserForm]=useState();
     const [error, setError]=useState();
+    const[loading, setLoading]=useState(false);
 
     const handleSubmit=(e)=>{
         e.preventDefault();
         createUserWithEmailAndPassword(auth, userForm.email, userForm.password)
-        .catch((e)=>{
-            setError(e.code.split('/')[[1]]);
-        })
+        .catch((e)=>setError(e.code.split('/')[[1]])).finally(()=>setLoading(false))
     }
 
     return(
+        loading ? <Flex className="form-container"><LoadingCircle/></Flex> :
         <Flex className="form-container">
             <Heading size={'lg'}>Sign up:</Heading>
             <form className="user-form" onSubmit={(e)=>handleSubmit(e)}>
