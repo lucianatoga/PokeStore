@@ -32,7 +32,7 @@ const SearchItem = ({children}) => {
                 </form>
             </Drawer.Body>
             <Drawer.CloseTrigger asChild>
-              <CloseButton size="xs" variant={'solid'} onClick={()=>setOpen(false)}/>
+              <CloseButton size="xs" variant={'subtle'} onClick={()=>setOpen(false)}/>
             </Drawer.CloseTrigger>
           </Drawer.Content>
         </Drawer.Positioner>

@@ -12,8 +12,8 @@ const Home=()=>{
     const [loadingBerries, setLoadingBerries]=useState(true);
   
     useEffect(()=>{        
-        getPokemons(14).then((data)=>setPokemons(data || [])).catch((error)=>{console.error(error)}).finally(()=>setLoadingPokemons(false));
-        getBerries(14).then((data)=> setBerries(data || [])).catch((error)=>console.error(error)).finally(()=>setLoadingBerries(false));
+        getPokemons(12).then((data)=>setPokemons(data || [])).catch((error)=>{console.error(error)}).finally(()=>setLoadingPokemons(false));
+        getBerries(12).then((data)=> setBerries(data || [])).catch((error)=>console.error(error)).finally(()=>setLoadingBerries(false));
     },[])
     return(
 

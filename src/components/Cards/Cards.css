@@ -1,6 +1,6 @@
 /* GENERAL */
 .card-container{
-    width:35rem;
+    width:32rem;
     min-height: 23rem;
     justify-content: space-between;
 }
@@ -108,5 +108,117 @@
     img{
         top: 3rem;
         min-width: 4rem
+    }
+}
+
+/* TABLET - MOBILE */
+@media only screen and (max-width: 650px) {
+    
+}
+/* TABLET */
+@media only screen and (min-width: 480px) and (max-width: 650px) {
+    .card-container{
+        width:25rem;
+        min-height: 17rem;
+    }
+    .detail-card{
+        width: 15rem;
+        height: 17rem;
+        p{
+            font-size: 12px;
+        }
+    }
+    .pokemon-name{
+        right: 1.5rem;
+        bottom: 3px;
+    }
+    .pokemon-move{
+        right: 2.8rem;
+        top: 3rem;
+    }
+    .pokemon{
+        img{
+            top: 1rem;
+            min-width: 5rem;
+            width: 5rem;
+        }
+    }
+    .energy-item{
+        bottom: 6.2rem;
+        left: 5rem;
+    }
+    .berry{
+        p{
+            right: 2.5rem;
+            top: 8px;
+            font-size: 12px;
+        }
+        img{
+            min-width: 2rem;
+            width: 4rem;
+            top: 2rem;
+        }
+    }
+    .item-info{
+        width: 10rem;
+        gap: 1rem;
+    }
+}
+/* MOBILE */
+@media only screen and (max-width: 480px){
+    .card-container{
+        width:15rem;
+        min-height: 20rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    .detail-card{
+        width: 12rem;
+        height: 13rem;
+        p{
+            font-size: 10px;
+        }
+    }
+    .pokemon-name{
+        right: 1.2rem;
+        bottom: 4px;
+    }
+    .pokemon-move{
+        right: 2rem;
+        top: 3rem;
+    }
+    .item-info{
+        width: 9rem;
+        font-size: 14px;
+        gap: 1rem;
+        Button{
+            width: 6rem;
+            align-self: center;
+        }
+        button{
+            font-size: 14px;
+        }
+    }
+    .pokemon{
+        img{
+            top: 8px;
+            min-width: 4rem;
+            width: 4rem;
+        }
+    }
+    .energy-item{
+        display: none;
+    }
+    .berry{
+        p{
+            right: 1.8rem;
+            top: 4px;
+            font-size: 10px;
+        }
+        img{
+            min-width: 2rem;
+            width: 3rem;
+            top: 1.5rem;
+        }
     }
 }

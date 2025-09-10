@@ -33,13 +33,13 @@ const SignUpForm=({setNewUser})=>{
                     </Field.Label>
                     <Input type="password" placeholder="password" onChange={(e)=>setUserForm((prev)=>({...prev, password: e.target.value}))}/>
                 </Field.Root>
+                <span  className="error-msg">{error}</span>
                 <Button variant={'subtle'} type="submit">Sign up</Button>
             </form>
             <Flex className="btns-container">
                 <p>Already have an account?</p>
                 <Button variant={'subtle'} size={'xs'} onClick={()=>{setNewUser(false)}}>Log in</Button>
             </Flex>
-            <span >{error}</span>
         </Flex>
     )
 }

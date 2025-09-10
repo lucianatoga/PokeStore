@@ -18,10 +18,14 @@ button{
 
 .blue-btn{
   background-color: rgba(52, 97, 194, 0.486);
-  color: white;
+  color: black;
 }
 .red-btn{
   background-color: rgba(182, 60, 38, 0.842);
+}
+.white-btn{
+  background-color: rgba(255, 255, 255, 0.842);
+  color: black;
 }
 
 .grayed-out-btn{
@@ -33,3 +37,4 @@ button{
     gap: 1rem;
     align-items: center;
 }
+

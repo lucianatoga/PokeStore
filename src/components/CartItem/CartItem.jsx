@@ -16,7 +16,7 @@ const CartItem=()=>{
     
     return(
         <Flex className="shopping-cart-summary" >
-          <Heading size='xl'>CART DETAIL</Heading>
+          <Heading >CART DETAIL</Heading>
           <table className="items-table">
             <thead>
             <tr>
@@ -42,7 +42,7 @@ const CartItem=()=>{
                             <button onClick={()=>incrementQty({item})}>+</button>
                         </div>
                     </div>
-                    <button onClick={()=>removeFromCart({item})}><RiDeleteBin6Line size='1.3rem'/></button>
+                    <button onClick={()=>removeFromCart({item})}><RiDeleteBin6Line /></button>
                   </Flex>
                 </td>
                 <td>${item.price*item.quantity}</td>
@@ -53,7 +53,7 @@ const CartItem=()=>{
               <tr><th colSpan={3}>Total: ${totalPrice}</th></tr>
             </tfoot>
           </table>
-          <b>Beware: If you want to save the pokemons you buy in your Pokedex, you need to be logged in at the time of the purchase. Otherwise, they won't be saved.</b>
+          <b>Please know: If you want to save the pokemons you buy in your Pokedex, you need to be logged in at the time of the purchase. Otherwise, they won't be saved.</b>
           <Button className="blue-btn" onClick={()=>{navigate('/checkout')}}>Checkout</Button>
       </Flex>
     )

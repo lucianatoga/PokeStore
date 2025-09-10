@@ -11,7 +11,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     width: 100%;
-    min-height: 80vh;
+    min-height: 60vh;
     gap: .5rem;
 }
 
@@ -45,6 +45,7 @@
 }
 .size-s{
     height: 9rem;
+    min-width: 4.5rem;
     img{
         max-width:3rem;
     }
@@ -64,6 +65,7 @@
     text-shadow: 5px 5px 7rem rgb(255, 234, 47);
     border-radius: 40%;
 }
+
 .expand-button:hover{
     scale: 1.05;
     text-shadow: 5px 5px 5rem rgb(255, 234, 47);
@@ -155,5 +157,129 @@
     p{
         right: 12px;
         top: 6px;
+    }
+}
+/* TABLET - MOBILE */
+@media only screen and (max-width: 650px) {
+  .size-s{
+        height: 6rem;
+        img{
+            max-width:2rem;
+        }
+        p{
+            font-size: 4px;
+        }
+    }
+    .faced-up-pokemon-s{
+        p{
+            top: 4px;
+        }
+    }
+    
+    
+    
+}
+/* TABLET */
+@media only screen and (min-width: 480px) and (max-width: 650px) {
+    /* CARDS PREVIEW */
+    .expand-button{
+        font-size: 6rem;
+    }
+     .size-m{
+        width: 8rem;
+        height: 12rem;
+        img{
+            max-width: 3rem;
+        }
+        p{
+            font-size: 7px;
+        }
+    }
+    .faced-down-pokemon{
+        p{
+            top: .9rem;
+        }
+    }
+    .faced-down-berry{
+        p{
+            right: 2.1rem;
+            top: 20px;
+        }
+    }
+    /* ALL CARDS DISPLAY - THUMBNAIL CARD */
+    .heading{
+        font-size: 4rem;
+    }
+    .faced-up-pokemon-m{
+        p{
+            right: 1.1rem;
+            top: .8rem;
+        }
+    }
+    .faced-up-berry-m{
+        p{
+            right: 1.7rem;
+            top: 1.2rem;
+        }
+    }
+}
+/* MOBILE */
+@media only screen and (max-width: 480px){
+    .expand-button{
+        font-size: 3rem;
+    }
+    .heading{
+        font-size: 3rem;
+    }
+    .size-m{
+        width: 5rem;
+        height: 7rem;
+        img{
+            min-width: 1rem;
+            max-width: 2.5rem;
+        }
+        p{
+            font-size: 5px;
+        }
+    }
+    .faced-down-pokemon{
+        p{
+            right: .5rem;
+            top: 5px;
+        }
+        img{
+            top: .5rem;
+        }
+    } 
+    .faced-down-berry{
+        img{
+            top: 1rem;
+        }
+        p{
+            right: 1rem;
+            top: .5rem;
+        }
+    } 
+    .cards-container{
+        min-height: 50vh;
+    }
+    /* ALL CARDS DISPLAY - THUMBNAIL CARD */
+    .faced-up-pokemon-m{
+        img{
+            top: 7px;
+        }
+        p{
+            right: 8px;
+            top: 4px;
+        }
+    }
+    .faced-up-berry-m{
+        img{
+            top: 1rem;
+        }
+        p{
+            right: 1rem;
+            top: 8px;
+        }
     }
 }
