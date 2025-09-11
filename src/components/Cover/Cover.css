@@ -19,6 +19,8 @@
         width: 20rem;
     }
 }
+
+/* MOBILE */
 @media only screen and (max-width: 480px) {
     @keyframes twinkle {
         0%{

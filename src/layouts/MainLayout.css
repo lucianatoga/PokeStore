@@ -1,5 +1,5 @@
 .body{
-    min-height: 85vh;
+    min-height: 80vh;
     align-items: center;
     justify-content: center;
     margin: 2rem;
@@ -16,4 +16,9 @@
         transform: scale(1);
     }
 }
-
+/* MOBILE */
+@media only screen and (max-width: 480px){
+  .body{
+    margin: .5rem;
+  }
+}

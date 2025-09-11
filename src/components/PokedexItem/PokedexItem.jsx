@@ -16,7 +16,7 @@ const PokedexItem=({items})=>{
     }
 
     return(
-        <Box width={'100%'}>
+        <Flex width={'100%'} justifyContent={'center'}>
             <Flex className="pokedex-container">
                     <select id='pokedex-filter' className="pokedex-filter" onChange={(e)=>handleChange(e)}>
                         <option value='all'>all</option>
@@ -32,7 +32,7 @@ const PokedexItem=({items})=>{
                 </Flex>
                 <p>no. {itemsFiltered[n].id}</p>
             </Flex>
-        </Box>
+        </Flex>
     )
 }
 

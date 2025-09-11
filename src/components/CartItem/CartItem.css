@@ -90,6 +90,7 @@
   font-weight: 500;
 }
 
+/* TABLET -MOBILE */
 @media only screen and (max-width: 650px) {
   .shopping-cart-summary{
     font-size: smaller;
