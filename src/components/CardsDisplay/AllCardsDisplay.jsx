@@ -6,7 +6,7 @@ const AllCardsDisplay=({items, title})=>{
     
     return(
             <Flex className="cards-display-container">
-                <h1 className="heading">{title}</h1> 
+                <h1 className="bangers-heading">{title}</h1> 
                 <Flex className='cards-container'>
                     {items.length>0 ?
                     items.map((item)=>{

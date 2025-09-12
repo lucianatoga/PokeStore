@@ -1,5 +1,4 @@
 :root {
-
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -11,11 +10,9 @@
     justify-content: space-evenly;
     min-height: 60vh;
 }
-
 button{
   cursor: pointer;
 }
-
 .blue-btn{
   background-color: rgba(52, 97, 194, 0.486);
   color: black;
@@ -23,18 +20,31 @@ button{
 .red-btn{
   background-color: rgba(182, 60, 38, 0.842);
 }
-.white-btn{
-  background-color: rgba(255, 255, 255, 0.842);
-  color: black;
-}
-
 .grayed-out-btn{
     opacity: .3;
     pointer-events: none;
 }
-
 .btns-container{
     gap: 1rem;
     align-items: center;
 }
 
+.bangers-heading{
+    padding: 0 2rem;
+    font-family: "Bangers", system-ui;
+    background-color: none;
+    color: rgba(182, 60, 38, 0.842) ;
+    font-size: 5rem;
+    text-align: center;
+}
+
+@media only screen and (min-width: 481px) and (max-width: 650px) {
+  .bangers-heading{
+    font-size: 4rem;
+  }
+}
+@media only screen and (max-width: 480px){
+  .bangers-heading{
+    font-size: 3rem;
+  }
+}

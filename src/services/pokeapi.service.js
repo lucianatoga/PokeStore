@@ -121,7 +121,7 @@ export async function searchItem(key){
             if (berry !== '404') return berry;
 
             //search bewtween berries
-            const berries = await getBerries(100);
+            const berries = await getBerries(100); //there are less than 100 berries
             let berriesFound=[];
             for (let item of berries){
                 if (item.name.includes(key)){

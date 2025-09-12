@@ -65,7 +65,7 @@
     }
 }
 /* MOBILE */
-@media only screen and (max-width: 480px){
+/* @media only screen and (max-width: 480px){
     .floating-btn {
         width: 2.5rem;
         height: 2.5rem;
@@ -85,4 +85,4 @@
         }
     }
     
-}
+} */

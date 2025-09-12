@@ -14,7 +14,10 @@ const Checkout=()=>{
         isFinalized ? 
         saleId ? 
         <Flex className='flex-centered'>
-            <h1>Thank you for your purchase! Order ID: {saleId} </h1>
+            <div>
+                <Heading>Thank you for your purchase! </Heading>
+                <Heading size={'md'}> Order ID: {saleId}</Heading>
+            </div>
             <Button className="blue-btn" onClick={()=>navigate('/pokedex')}>Open Pokédex</Button>
         </Flex>
         : error ? <Heading size={'lg'}>Sorry, it was not possible to complete the purchase.</Heading> : <LoadingCircle/>

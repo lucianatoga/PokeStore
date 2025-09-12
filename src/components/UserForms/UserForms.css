@@ -8,6 +8,7 @@
     gap: 3rem;
 }
 .error-msg{
-    background-color: #ff4d4d;
+    background-color: #d83c3c;
     align-self: center;
+    padding: 0 5px;
 }

@@ -110,14 +110,6 @@
 }
 
 /* ALL CARDS DISPLAY */
-.heading{
-    padding: 0 2rem;
-    font-family: "Bangers", system-ui;
-    background-color: none;
-    color: rgba(182, 60, 38, 0.842) ;
-    font-size: 5rem;
-}
-
 
 .faced-up-berry-m{
     background-image: url('../../assets/berry-card.png');
@@ -175,7 +167,16 @@
             top: 4px;
         }
     }
-    
+    .faced-up-berry-s{
+    img{
+        top: .8rem;
+        width: 1.5rem;
+    }
+    p{
+        right: 1rem;
+        top:7px;
+    }
+}
     
     
 }
@@ -207,9 +208,7 @@
         }
     }
     /* ALL CARDS DISPLAY - THUMBNAIL CARD */
-    .heading{
-        font-size: 4rem;
-    }
+
     .faced-up-pokemon-m{
         p{
             right: 1.1rem;
@@ -226,9 +225,6 @@
 /* MOBILE */
 @media only screen and (max-width: 480px){
     .expand-button{
-        font-size: 3rem;
-    }
-    .heading{
         font-size: 3rem;
     }
     .size-m{

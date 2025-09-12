@@ -34,7 +34,7 @@ const Pokedex=()=>{
         user ?
             loading ? <LoadingCircle/> : 
                 error ? 
-                    <Heading size={'lg'}>Sorry, an error occurred. Redirecting...</Heading>:
+                    <Heading >Sorry, an error occurred. Redirecting...</Heading>:
                     pokedex.length===0 ? <RedirectItem message={"You haven't bought any cards."}/> : <PokedexItem items={pokedex}/>
         : <Heading size={'lg'}>Please login to view your Pokedex. Redirecting...</Heading>
     )

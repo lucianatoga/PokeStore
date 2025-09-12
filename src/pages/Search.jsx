@@ -17,7 +17,7 @@ const Search=()=>{
 
     return(
         <Flex className="flex-centered">
-            <h1 className="heading">results for '{key}'</h1>
+            <h1 className="bangers-heading">results for '{key}'</h1>
             {loading ? <LoadingCircle/> :
             items === undefined ? <Heading size='xl'>not found</Heading> :
             <AllCardsDisplay items={items}/>}
