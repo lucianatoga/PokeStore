@@ -8,7 +8,7 @@ import { useParams } from "react-router";
   const CardsXType=()=>{
     const {type}=useParams();
     const [items, setItems]=useState([]);
-    const [itemsCount, setItemsCount]=useState(21);
+    const [itemsCount, setItemsCount]=useState(20);
     const [loading, setLoading]=useState(true);
     const [loadingMore, setLoadingMore]=useState(false);
     
@@ -25,7 +25,7 @@ import { useParams } from "react-router";
       <Flex className="flex-centered">
         <AllCardsDisplay items={items} title={type}/>
         {loadingMore ? <LoadingCircle/>
-        : <Button className={`${itemsCount>items.length ? 'grayed-out-btn' : ''} red-btn`} onClick={()=>{setItemsCount(itemsCount+21); setLoadingMore(true)}}>Load more</Button>}
+        : <Button className={`${itemsCount>items.length ? 'grayed-out-btn' : ''} red-btn`} onClick={()=>{setItemsCount(itemsCount+20); setLoadingMore(true)}}>Load more</Button>}
       </Flex>
     )
   }

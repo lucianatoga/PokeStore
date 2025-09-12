@@ -112,6 +112,7 @@ export async function getTypes(){
 }
 
 export async function searchItem(key){
+    key=key.toLowerCase();
         try{
             //search individually in case the key provided is an exact match
             let pokemon = await getPokemonById(key);
@@ -144,7 +145,7 @@ export async function searchItem(key){
             return undefined;
         }
         catch (error) {
-            return(error.message);
-            //return undefined;
+            console.error(error.message);
+            return undefined;
         }
     }
