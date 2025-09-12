@@ -9,17 +9,18 @@ const Search=()=>{
     const [items, setItems]=useState();
     const {key}=useParams();
     const [loading,setLoading]=useState(true);
+    const [error, setError]=useState()
 
     useEffect(()=>{
         setLoading(true);
-        searchItem(key).then((data)=>setItems(data)).catch((error)=>console.error(error)).finally(()=>setLoading(false))
+        searchItem(key).then((data)=>setItems(data)).catch((error)=>setError(error)).finally(()=>setLoading(false))
     },[key])
 
     return(
         <Flex className="flex-centered">
             <h1 className="bangers-heading">results for '{key}'</h1>
             {loading ? <LoadingCircle/> :
-            items === undefined ? <Heading size='xl'>not found</Heading> :
+            items === undefined ? <Heading size='xl'>not found </Heading> : error ? <p>{error}</p> :
             <AllCardsDisplay items={items}/>}
         </Flex>
     )

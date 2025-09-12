@@ -144,7 +144,7 @@ export async function searchItem(key){
             return undefined;
         }
         catch (error) {
-            console.error(error.message);
-            return undefined;
+            return(error.message);
+            //return undefined;
         }
     }

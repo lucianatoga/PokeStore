@@ -225,7 +225,7 @@
 /* MOBILE */
 @media only screen and (max-width: 480px){
     .expand-button{
-        font-size: 3rem;
+        font-size: 4rem;
     }
     .size-m{
         width: 5rem;
