@@ -13,19 +13,35 @@ import { useParams } from "react-router";
     const [loadingMore, setLoadingMore]=useState(false);
     
     useEffect(()=>{
-        type==='berries' ? 
-        getBerries(itemsCount).then((data)=>setItems(data||[])).catch((e)=>console.error(e))
-        .finally(()=>{ setLoading(false); setLoadingMore(false);}) 
-        : getPokemons(itemsCount).then((data)=>setItems(data||[])).catch((e)=>console.error(e))
-        .finally(()=>{ setLoading(false); setLoadingMore(false);}) 
+      const controller= new AbortController();
+        if(type==='berries'){
+          getBerries(itemsCount, controller.signal).then((data)=>setItems(data||[])).catch((e)=>console.error(e))
+          .finally(()=>{ 
+            setLoading(false); 
+            setLoadingMore(false)
+          }) 
+        }
+        else{
+          getPokemons(itemsCount, controller.signal).then((data)=>setItems(data||[])).catch((e)=>console.error(e))
+          .finally(()=>{ 
+            setLoading(false); 
+            setLoadingMore(false);
+          }) 
+        }
+        return()=>controller.abort();
     },[type, itemsCount])
+        
+    const handleClick=()=>{
+      setItemsCount(itemsCount+20); 
+      setLoadingMore(true);
+    }
     
     return(
       loading ? <LoadingCircle/>:
       <Flex className="flex-centered">
         <AllCardsDisplay items={items} title={type}/>
         {loadingMore ? <LoadingCircle/>
-        : <Button className={`${itemsCount>items.length ? 'grayed-out-btn' : ''} red-btn`} onClick={()=>{setItemsCount(itemsCount+20); setLoadingMore(true)}}>Load more</Button>}
+        : <Button className={`${itemsCount>items.length ? 'grayed-out-btn' : ''} red-btn`} onClick={()=>handleClick()}>Load more</Button>}
       </Flex>
     )
   }

@@ -18,7 +18,7 @@ const UserAuth=({children})=>{
     const [error, setError]=useState();
     const[loading, setLoading]=useState(false);
 
-    const editProfile=(e)=>{
+    const handleSubmit=(e)=>{
       e.preventDefault();
       setLoading(true);
       updateProfile(user,{displayName:newName}).then(()=>setEdit(false)).catch((e)=>setError(e.code)).finally(()=>setLoading(false))
@@ -38,7 +38,7 @@ const UserAuth=({children})=>{
                     <Flex className="form-container">
                       {edit ? 
                       loading ? <LoadingCircle/> :
-                      <form className="user-form" onSubmit={(e)=>editProfile(e)}>
+                      <form className="user-form" onSubmit={(e)=>handleSubmit(e)}>
                         <Input type="text" placeholder="enter your name" onChange={(e)=>setNewName(e.target.value)}/>
                         <Button type="submit" className="blue-btn"><MdDone/></Button>
                         <span>{error}</span>

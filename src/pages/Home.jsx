@@ -10,13 +10,15 @@ const Home=()=>{
     const [berries, setBerries]=useState([]);
     const [loadingPokemons, setLoadingPokemons]=useState(true);
     const [loadingBerries, setLoadingBerries]=useState(true);
-  
-    useEffect(()=>{        
-        getPokemons(12).then((data)=>setPokemons(data || [])).catch((error)=>{console.error(error)}).finally(()=>setLoadingPokemons(false));
-        getBerries(12).then((data)=> setBerries(data || [])).catch((error)=>console.error(error)).finally(()=>setLoadingBerries(false));
-    },[])
-    return(
 
+    useEffect(()=>{        
+        const controller=new AbortController();
+        getPokemons(12, controller.signal).then((data)=>setPokemons(data || [])).catch((error)=>{console.error(error)}).finally(()=>setLoadingPokemons(false));
+        getBerries(12, controller.signal).then((data)=> setBerries(data || [])).catch((error)=>console.error(error)).finally(()=>setLoadingBerries(false));
+        return()=>controller.abort();
+    },[])
+    
+    return(
         <Box>
             <Cover/>
             <Flex className="flex-centered">

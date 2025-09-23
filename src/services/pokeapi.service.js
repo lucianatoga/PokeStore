@@ -1,9 +1,9 @@
 import { BASE_URL } from "./config/api";
 
-export async function getPokemons(limit){
+export async function getPokemons(limit, signal){
         try{
             //By default, a list "page" will contain up to 20 resources.
-            const response = limit==null ? await fetch( `${BASE_URL}pokemon`) : await fetch( `${BASE_URL}pokemon?limit=${limit}`);
+            const response = limit==null ? await fetch( `${BASE_URL}pokemon`, signal) : await fetch( `${BASE_URL}pokemon?limit=${limit}`, signal);
             if(!response.ok){
                 throw new Error(`response status: ${response.status}`);
             }
@@ -19,10 +19,10 @@ export async function getPokemons(limit){
     
 }
 
-export async function getBerries(limit){
+export async function getBerries(limit, signal){
     try{
         //By default, a list "page" will contain up to 20 resources.
-        const response = limit==null ? await fetch(`${BASE_URL}berry`) : await fetch(`${BASE_URL}berry?limit=${limit}`);
+        const response = limit==null ? await fetch(`${BASE_URL}berry`, signal) : await fetch(`${BASE_URL}berry?limit=${limit}`, signal);
         if(!response.ok){
             throw new Error(`response status: ${response.status}`)
         }
@@ -41,9 +41,9 @@ export async function getBerries(limit){
     }
 }
 
-export async function getPokemonById(id){
+export async function getPokemonById(id, signal){
     try{
-        const response = await fetch(`${BASE_URL}/pokemon/${id}`);
+        const response = await fetch(`${BASE_URL}/pokemon/${id}`, signal);
         if(!response.ok){
             throw new Error(response.status);
         } 
@@ -63,14 +63,14 @@ export async function getPokemonById(id){
 {/* getAbility(pokemon.abilities[0].ability.url)=>ability.id, name, effect_entries[0].effect
     getItem(pokemon.held_items[0].item.url)=>item.id, name, sprites.default
 */}
-export async function getBerryById(id){
+export async function getBerryById(id, signal){
     try{
-        const response = await fetch(`${BASE_URL}/berry/${id}`);
+        const response = await fetch(`${BASE_URL}/berry/${id}`, signal);
         if(!response.ok){
             throw new Error(response.status)
         } 
         const berry= await response.json();
-        const berryItem = await getItem(berry.item.url);
+        const berryItem = await getItem(berry.item.url, signal);
         //add 'type' property as well to facilitate further manipulation:
         return {...berry, img:berryItem.sprites.default, type:'berry'};
     }
@@ -80,9 +80,9 @@ export async function getBerryById(id){
     }
 }
 
-export async function getItem(url){
+export async function getItem(url, signal){
     try{
-        const response = await fetch(url);
+        const response = await fetch(url, signal);
         if(!response.ok){
             throw new Error(`response status: ${response.status}`);
         }
@@ -111,18 +111,18 @@ export async function getTypes(){
     }
 }
 
-export async function searchItem(key){
+export async function searchItem(key, signal){
     key=key.toLowerCase();
         try{
             //search individually in case the key provided is an exact match
-            let pokemon = await getPokemonById(key);
+            let pokemon = await getPokemonById(key, signal);
             if (pokemon !== '404') return pokemon;
 
-            let berry = await getBerryById(key);
+            let berry = await getBerryById(key, signal);
             if (berry !== '404') return berry;
 
             //search bewtween berries
-            const berries = await getBerries(100); //there are less than 100 berries
+            const berries = await getBerries(100, signal); //there are less than 100 berries
             let berriesFound=[];
             for (let item of berries){
                 if (item.name.includes(key)){
@@ -132,7 +132,7 @@ export async function searchItem(key){
             if(berriesFound.length>0) return berriesFound;
 
             //search between pokemons in batches
-            const pokemons= await getPokemons(600);
+            const pokemons= await getPokemons(600, signal);
             let pokemonsFound=[];
             for( let item of pokemons){
                 if(item.name.includes(key)){

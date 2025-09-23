@@ -10,12 +10,23 @@ const CardDetail=()=>{
     const [item, setItem]=useState();
     const [loading, setLoading]=useState(true);
     useEffect(()=>{
-        type==='pokemon' ? getPokemonById(id).then((item)=>setItem(item)).catch((e)=>console.error(e)).finally(()=>setLoading(false))
-        : getBerryById(id).then((item)=>setItem(item)).catch((e)=>console.error(e)).finally(()=>setLoading(false));
+        const controller=new AbortController();
+        if(type==='pokemon'){
+            getPokemonById(id, controller.signal).then((item)=>setItem(item))
+            .catch((e)=>console.error(e))
+            .finally(()=>setLoading(false))
+        } 
+        else{
+            getBerryById(id, controller.signal).then((item)=>setItem(item))
+            .catch((e)=>console.error(e))
+            .finally(()=>setLoading(false))
+        }
+        return()=>controller.abort();
     },[type,id])
+
     return(
         loading ? <LoadingCircle/> :
-        type==='berry'? <BerryCard item={item}/> : <PokeCard item={item}/>
+        type==='berry' ? <BerryCard item={item}/> : <PokeCard item={item}/>
     )
 }
 

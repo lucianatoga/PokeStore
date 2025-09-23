@@ -7,9 +7,9 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db } from '@/services/config/firebase';
 import { AuthContext } from '@/context/AuthContext';
 
-const CheckoutForm=({setIsFinalized, setSaleId, setError})=>{
+const CheckoutForm=({setIsFinalized, setSaleId})=>{
     const{cart, setCart}=useContext(CartContext);
-    
+    const [error, setError]=useState(false);
     const {user}=useContext(AuthContext);
     const [saleForm, setSaleForm]=useState(
             {
@@ -24,7 +24,7 @@ const CheckoutForm=({setIsFinalized, setSaleId, setError})=>{
             setSaleForm((prev)=>({...prev, buyerDetails:{...prev.buyerDetails, uid:user.uid}}))
         }
         setSaleForm((prev)=>({...prev, date:Date.now(), items:cart.map((item)=>
-            ({uid:item.type+item.id, id:item.id, name:item.name, qty:item.quantity, price:item.price, img:item.img, type:item.type})
+            ({...item, uid:item.type+item.id})
         )}))
     },[])
 
@@ -46,6 +46,7 @@ const CheckoutForm=({setIsFinalized, setSaleId, setError})=>{
     }
     return(
         saleForm.items.length<1 ? <RedirectItem message={"You didn't select any cards"}/> :
+        error ? <Heading size={'lg'}>Sorry, it was not possible to complete the purchase.</Heading>  :
         <Box className="checkout-form-container">
             <h1>Fill the form to complete your purchase:</h1>
             <form className="checkout-form" onSubmit={(e)=>handleSubmit(e)}>
