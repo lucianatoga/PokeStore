@@ -1,12 +1,20 @@
-# React + Vite
+# SPA - Pokémon cards web store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Details
+- React + Vite
+- JavaScript + SWC
+- Firebase DB and Authentication
 
-Currently, two official plugins are available:
+## Introduction
+This application simulates a web store for Pokémon cards. It fetches the data from *PokémonAPI* and displays Pokémons and Berries cards. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The user can navigate through it, look at the cards and 'buy' them, do a search and register themselves. Additionally, if the user is logged in, they'll be able to see the items they've bought in the pokedex.
 
-## Expanding the ESLint configuration
+### Purchase process:
+The application simulates the process by asking the user for some PI and to confirm the purchase, which creates a sale form with the user and products details and registeres it in a *Firestore Database* collection. 
+After successfully complete, it returns the purchase ID.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Authentication:
+The application uses *Firebase Authentication* to register users. They can sign up and then log in with an email and password.
+
+If the user is authenticated, their purchases are registered with the userId. This way, if they're logged in, they'll have access to see their pokémons and berries collection in the Pokedex.

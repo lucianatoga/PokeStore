@@ -111,6 +111,12 @@
 
 /* ALL CARDS DISPLAY */
 
+.page-bottom{
+    position: fixed;
+    right: .8rem;
+    bottom: 4rem;
+}
+
 .faced-up-berry-m{
     background-image: url('../../assets/berry-card.png');
     img{

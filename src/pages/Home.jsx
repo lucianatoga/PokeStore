@@ -11,7 +11,7 @@ const Home=()=>{
     const [loadingPokemons, setLoadingPokemons]=useState(true);
     const [loadingBerries, setLoadingBerries]=useState(true);
 
-    useEffect(()=>{        
+    useEffect(()=>{
         const controller=new AbortController();
         getPokemons(12, controller.signal).then((data)=>setPokemons(data || [])).catch((error)=>{console.error(error)}).finally(()=>setLoadingPokemons(false));
         getBerries(12, controller.signal).then((data)=> setBerries(data || [])).catch((error)=>console.error(error)).finally(()=>setLoadingBerries(false));
