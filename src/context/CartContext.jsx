@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 
+
 export const CartContext=createContext();
 
 export const CartProvider=({children})=>{
@@ -11,6 +12,7 @@ export const CartProvider=({children})=>{
         localStorage.setItem('cart',JSON.stringify(cart));
     },[cart])
     
+
     const addToCart=({item})=>{
         setCart((prevCart)=>{
             if(prevCart.find((i)=>i.id===item.id && i.type===item.type)){ 
@@ -19,7 +21,7 @@ export const CartProvider=({children})=>{
              else{
                 return([...prevCart, {id:item.id, name:item.name, img:item.img, type:item.type, quantity:1, price:100}])
             } 
-        })
+        });
     }
 
     const removeFromCart=({item})=>{

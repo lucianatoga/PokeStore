@@ -2,10 +2,11 @@ import {Button, Flex } from '@chakra-ui/react'
 import './Cards.css'
 import { useContext } from 'react';
 import { CartContext } from '@/context/CartContext';
-import { toProperNoun } from '@/hooks/toProperNoun';
+import { toProperNoun } from '@/hooks/toProperNoun'; 
 
 const BerryCard=({item})=>{
     const {addToCart}=useContext(CartContext);
+
     return(
         <Flex className='card-container'>
             <Flex className='detail-card berry'>

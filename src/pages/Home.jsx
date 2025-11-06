@@ -18,6 +18,7 @@ const Home=()=>{
         return()=>controller.abort();
     },[])
     
+    
     return(
         <Box>
             <Cover/>
