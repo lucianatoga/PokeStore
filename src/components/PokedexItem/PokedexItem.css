@@ -11,18 +11,18 @@
     
     p{
         position: relative;
-        right: 9.5rem;
-        top: 3.2rem;
+        right: 8.5rem;
+        top: 3rem;
         rotate: -1deg;
     }
 }
 #pokedex-filter{
-    width: 10rem;
-    height: 3rem;
+    width: 9rem;
+    height: 2rem;
     padding: 5px;
     position: relative;
-    left: 8.5rem;
-    top: 1rem;
+    left: 8rem;
+    top: 1.2rem;
     rotate: -3deg;
     background-color: #242424;
     
@@ -33,8 +33,8 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    right: 7.8rem;
-    top: .5rem;
+    right: 7rem;
+    top: 11px;
     rotate: -2deg;
     color: black;
     gap: .5rem;

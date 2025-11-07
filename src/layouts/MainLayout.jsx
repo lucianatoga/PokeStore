@@ -16,7 +16,7 @@ const MainLayout=()=>{
             title:'Note:',
             titleText: 'Note',
             theme:'dark',
-            text:'Some images can temporarily have problem loading due to too many requests to the PokéAPI (not from this app)',
+            text:'Some images can temporarily have problem loading due to too many API requests (not from this app)',
             icon: 'info',
             iconColor: 'rgb(236, 62, 31)',
             width:'20rem',

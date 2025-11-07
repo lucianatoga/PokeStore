@@ -40,7 +40,7 @@ const PokedexItem=memo(
                             <button onClick={()=>setN((prevN)=>prevN+1)} className={n===itemsFiltered.length-1 ? 'grayed-out-btn' : ''}><MdNavigateNext size={'1.3rem'}/></button>
                         </div>
                     </Flex>
-                    <p>no. {itemsFiltered[n].id}</p>
+                    <p>n. {itemsFiltered[n].id}</p>
                 </Flex>
             </Flex>
         )
